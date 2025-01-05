@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'fallback_default_secret_key')
 
