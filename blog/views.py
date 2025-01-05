@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import (
     ListView, 
     DetailView, 
@@ -8,17 +8,9 @@ from django.views.generic import (
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post
+from django.contrib.auth.models import User
 
 # Create your views here.
-def home(req):
-    context = {
-        "posts" : Post.objects.all()
-    }
-    return render(req, 'blog/home.html', context)
-
-def about(req):
-    return render(req, 'blog/about.html', {'title': 'About'})
-
 class PostListView(ListView):
     model = Post
     template_name = 'blog/home.html'
@@ -26,6 +18,7 @@ class PostListView(ListView):
     ordering = [
         '-date'
     ]
+    paginate_by = 5
 
 class PostDetailView(DetailView):
     model = Post
@@ -72,3 +65,22 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         
         else: return False
 
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'blog/users_posts.html'
+    context_object_name = 'posts'
+    paginate_by = 5
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+            
+        return Post.objects.filter(author=user).order_by('-date')
+
+def home(req):
+    context = {
+        "posts" : Post.objects.all()
+    }
+    return render(req, 'blog/home.html', context)
+
+def about(req):
+    return render(req, 'blog/about.html', {'title': 'About'})
