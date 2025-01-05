@@ -7,10 +7,10 @@
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Login</legend>
                 {{ form|crispy }}
+                {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                {% endif %}
             </fieldset>
-            {% if next %}
-                <input type="hidden" name="next" value="{{ next }}">
-            {% endif %}
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Login</button>
             </div>
