@@ -37,6 +37,10 @@ ALLOWED_HOSTS = [
     'inner-annabella-potafe-031f7970.koyeb.app'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://inner-annabella-potafe-031f7970.koyeb.app",
+]
+
 
 # Application definition
 
