@@ -4,6 +4,9 @@ This is a Django-based blogging platform that allows users to create, read, upda
 
 ---
 
+# NOTE:
+The site has been deployed using railway and koyeb, there are still some feature additions in progress such as sidebar completion, chat and comment section and also an integrated chatbot for the app. Meanwhile enjoy the app.
+
 ## 🚀 Features
 
 - User authentication: Login, Signup, and Logout.
