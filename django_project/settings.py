@@ -33,7 +33,9 @@ SECRET_KEY = 'django-insecure-2ct-lnybrm!n$t5m^e&zqrj2bh)8eri762&323kn4njf=idj$n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'inner-annabella-potafe-031f7970.koyeb.app'
+]
 
 
 # Application definition
